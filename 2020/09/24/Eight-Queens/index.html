@@ -194,6 +194,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -288,6 +296,36 @@ flag[<span class="hljs-number">3</span>][i-j+n]=<span class="hljs-number">1</spa
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://example.com/2020/09/24/Eight-Queens/';
+        this.page.identifier = '/2020/09/24/Eight-Queens/';
+      };
+      function loadDisqus() {
+        (function () {
+          var d = document,
+            s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      }
+      waitElementVisible('disqus_thread', loadDisqus);
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener noopener">comments powered by Disqus.</a>
+    </noscript>
+  </div>
+
+
+              </article>
             
           </article>
         </div>
