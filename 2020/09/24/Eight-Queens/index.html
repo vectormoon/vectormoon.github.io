@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Eight_Queens - vectormoon&#39;s blog</title>
+  <title>八皇后问题 - vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      283 字
+      373 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -225,10 +225,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Eight_Queens</h1>
+            <h1 style="display: none">八皇后问题</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p> 深搜、标记以及回溯</p>
+              <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。<br><strong>输入格式</strong><br>一行一个正整数n，表示棋盘是n*n大小的<br><strong>输出格式</strong><br>有多少种摆法</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p> 深搜、标记以及回溯</p>
 <h2 id="算法详情"><a href="#算法详情" class="headerlink" title="算法详情"></a>算法详情</h2><p>介绍顺序：标记-&gt;深搜-&gt;回溯</p>
 <h4 id="1-标记"><a href="#1-标记" class="headerlink" title="1.标记"></a>1.标记</h4><p> 使用数组记录无法下棋的部分：</p>
 <pre><code class="hljs cpp"><span class="hljs-keyword">bool</span> flag[<span class="hljs-number">4</span>][<span class="hljs-number">100</span>];</code></pre>
@@ -487,7 +488,7 @@ flag[<span class="hljs-number">3</span>][i-j+n]=<span class="hljs-number">1</spa
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Eight_Queens&nbsp;",
+        "八皇后问题&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

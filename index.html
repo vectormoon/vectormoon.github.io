@@ -172,13 +172,13 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/09/24/Eight-Queens/" target="_self">
-          <img src="/img/blog_contents/Eight_Queens/Eight%20Queens_index.jpg" srcset="/img/loading.gif" alt="Eight_Queens">
+          <img src="/img/blog_contents/Eight_Queens/Eight%20Queens_index.jpg" srcset="/img/loading.gif" alt="八皇后问题">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/09/24/Eight-Queens/">Eight_Queens</a>
+        <a href="/2020/09/24/Eight-Queens/">八皇后问题</a>
       </h1>
 
       <p class="index-excerpt">
@@ -187,16 +187,12 @@
           
             
           
-          解题思路 深搜、标记以及回溯
+          题目描述在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。输入格式一行一个正整数n，表示棋盘是n*n大小的输出格式有多少种摆法
+解题思路 深搜、标记以及回溯
 算法详情介绍顺序：标记-&gt;深搜-&gt;回溯
 1.标记 使用数组记录无法下棋的部分：
 bool flag[4][100];
-当置为1时，即为无法再放置的标记，具体标记内容：
-flag[1][j]=1 //标记j列不能再放置
-flag[2][i+j]=1 //标记对角线 
-flag[3][i-j+n]=1 //标记对角线
-举个例子，当棋盘为4*4时：
-flag[2
+当置为1时，即为无法再放置的标记，具体标
         </a>
       </p>
 
