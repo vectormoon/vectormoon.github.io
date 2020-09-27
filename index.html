@@ -171,6 +171,60 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/27/B-spline/" target="_self">
+          <img src="/img/blog_contents/B-spline/banner.png" srcset="/img/loading.gif" alt="B-spline(B样条曲线)">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/27/B-spline/">B-spline(B样条曲线)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/27/B-spline/">
+          
+          
+            
+          
+          算法产生背景Bezier曲线有以下几个不足点，所以导致出现了B-spline算法：
+
+一旦确定特征多边形，就确定了曲线的阶次
+Bezier曲线拼接复杂（需要满足几何连续性，参数连续性等）
+Bezier曲线不能作局部修改（只能整体修改）
+
+B-spline算法是整条曲线用一段一段的曲线连接而成，采用分段连续多段式生成
+B-spline曲线定义B-spline曲线定义为：
+P(u)=\sum_{i=0
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-27 22:37" pubdate>
+              2020-09-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/algorithm/">algorithm</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/09/25/Tetris99/" target="_self">
           <img src="/img/blog_contents/Tetris99/cover.jpg" srcset="/img/loading.gif" alt="Tetris99">
         </a>
@@ -302,12 +356,12 @@ Bezier曲线的定义Bezier算法围绕着Bezier曲线展开，Bezier曲线的
           
             
           
-          题目描述在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。输入格式一行一个正整数n，表示棋盘是nn大小的*输出格式有多少种摆法
+          题目描述在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。输入格式一行一个正整数n，表示棋盘是$nn$大小的*输出格式有多少种摆法
 解题思路 深搜、标记以及回溯
 算法详情介绍顺序：标记-&gt;深搜-&gt;回溯
 1.标记 使用数组记录无法下棋的部分：
 bool flag[4][100];
-当置为1时，即为无法再放置的标记，具体标
+当置为1时，即为无法再放置的标记，具
         </a>
       </p>
 

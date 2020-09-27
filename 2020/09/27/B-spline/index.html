@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Tetris99 - vectormoon&#39;s blog</title>
+  <title>B-spline(B样条曲线) - vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,7 +150,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/blog_contents/Tetris99/banner.png') no-repeat center center;
+         style="background: url('/img/blog_contents/B-spline/banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-25 20:53" pubdate>
-        2020年9月25日 晚上
+      <time datetime="2020-09-27 22:37" pubdate>
+        2020年9月27日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      631 字
+      277 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      3
        分钟
     </span>
   
@@ -225,30 +225,64 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Tetris99</h1>
+            <h1 style="display: none">B-spline(B样条曲线)</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="笔者游戏情况"><a href="#笔者游戏情况" class="headerlink" title="笔者游戏情况"></a>笔者游戏情况</h2><ul>
-<li>游戏时长55小时</li>
-<li>已购买dlc部分</li>
-<li>多次获得普通模式Tetris第一</li>
-<li>Ver. 2.1.0<h2 id="游戏优点"><a href="#游戏优点" class="headerlink" title="游戏优点"></a>游戏优点</h2></li>
-<li>成熟的玩法，百听不厌的背景音乐</li>
-<li>易于上手难于精通</li>
-<li>良好的游戏体验</li>
-<li>大逃杀模式与俄罗斯方块的完美结合<h2 id="游戏缺点"><a href="#游戏缺点" class="headerlink" title="游戏缺点"></a>游戏缺点</h2></li>
-<li>dlc付费内容有些许匮乏</li>
-</ul>
-<h2 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h2><p>&emsp; 一个由四格骨牌组成的美妙世界！在此有必要说明一下现代俄罗斯方块和传统俄罗斯方块的不同，两者主要区别在于现代俄罗斯方块有着更加丰富的旋转系统，使得游戏的可玩性大大提升。而Tetris99所采用的正是现代俄罗斯方块的规则，非常值得认知还停留在传统俄罗斯方块的朋友游玩。</p>
-<p>&emsp; Tetris99的优点毋庸置疑，大逃杀和俄罗斯方块两个几乎不相干的关键词被Tetris99巧妙的结合在一起，但是可玩性上却产生了奇妙反应。其良好的保护机制使得就算是刚上手的新人也可以紧张又轻松的玩完整局游戏。</p>
-<p>&emsp; 当然就算是这样一个近乎完美的免费游戏，如果在购买了游戏dlc的情况下，与免费内容一经对比也会显得稍有逊色。游戏的dlc售价70人民币左右，dlc包含以下内容：</p>
+              <h2 id="算法产生背景"><a href="#算法产生背景" class="headerlink" title="算法产生背景"></a>算法产生背景</h2><p>Bezier曲线有以下几个不足点，所以导致出现了B-spline算法：</p>
 <ul>
-<li>马拉松模式（150行，999行）</li>
-<li>CPU Tetris99大作战（和99个机器人吃鸡）</li>
-<li>本地n人对战（整局游戏由n个玩家，99-n个电脑组成）</li>
+<li>一旦确定特征多边形，就确定了曲线的阶次</li>
+<li>Bezier曲线拼接复杂（需要满足几何连续性，参数连续性等）</li>
+<li>Bezier曲线不能作局部修改（只能整体修改）</li>
 </ul>
-<p>&emsp; 在玩的正上瘾的时候，购入dlc可谓是被泼了一盆凉水；购入dlc的玩家错略分为两种：进阶玩家和娱乐玩家。对于一个想要进阶的玩家只有一个马拉松模式可以用来练习，缺少40行等模式（不过硬要是折中倒是也是凑合）其他几个dlc内容又显得可有可无；娱乐玩家购入dlc最大的优点是可以通过玩CPU大作战来体验一下吃鸡喜悦（雾）</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp; 质量上乘的免费游戏，就算在现如今游戏画面逼真，优秀游戏泛滥的年代，Tetris99也是一个能独当一面的优秀游戏。最后引用一下俄罗斯方块贴吧吧简介：俄罗斯方块看似简单但却变化无穷。</p>
+<p>B-spline算法是整条曲线用一段一段的曲线连接而成，采用分段连续多段式生成</p>
+<h2 id="B-spline曲线定义"><a href="#B-spline曲线定义" class="headerlink" title="B-spline曲线定义"></a>B-spline曲线定义</h2><p>B-spline曲线定义为：</p>
+<script type="math/tex; mode=display">P(u)=\sum_{i=0}^nP_iB_{i,k}(u) \qquad u\in [u_{k-1}, u_{n+1}]</script><p>其中$P_i$是特征多边形的顶点；$B_{i,k}$称为k阶（k-1次）基函数，B-spline算法阶数是次数加1，这是和Bezier算法的一个不同之处；定义域的解释之后会给出，先给出基函数算法。</p>
+<p>B-spline基函数的求出算法应用最广泛的是deBoor-cox递推算法：</p>
+<script type="math/tex; mode=display">B_{i,k}(u)=\frac{u-u_i}{u_{i+k-1}-u_i}*B_{i,k-1}{u}+\frac{u_{i+k}-u}{u_{i+k}-u_{i+1}}*B_{i+1,k+1}(u)</script><script type="math/tex; mode=display">B_{i,1}(u)=\begin{cases}1 & u_i<u<u_{i+1};\\0 & Otherwise.\end{cases}</script><p><strong>规定0/0=0</strong></p>
+<p>B-spline曲线的定义域为$u\in [u_{k-1}, u_{n+1}]$。设U为所有节点矢量的集合，显见节点表个数为$n+k+1$个。举例说明，当$n=4,k=4$时，有$U=\{u_0,u_1,u_2,u_3,u_4,u_5,u_6,u_7,u_8\}$。第一项为$P_0B_{0,4}(u)$，由deBoor-cox算法可知，其涉及到$u_0$到$u_4$五个点；第二项同理，设计到$u_1$到$u_5$五个点；其余同理；所以可以画出区间对应坐标轴：</p>
+<p><img src="/img/blog_contents/B-spline/img1.png" srcset="/img/loading.gif" alt=""></p>
+<p><strong>区间合法所需要的条件为</strong>：区间内必须有足够基函数与顶点对应，也即区间中基函数覆盖较多的区间才是一个合法区间。所以上例中对应的合法区间为$u\in [u_{3}, u_{5}]$也就是$u\in [u_{k-1}, u_{n+1}]$</p>
+<h2 id="B-spline的类型划分"><a href="#B-spline的类型划分" class="headerlink" title="B-spline的类型划分"></a>B-spline的类型划分</h2><p>有均匀B样条曲线，准均匀B样条曲线，分段Bezier曲线，非均匀B样条曲线这几种方法，这里采用均匀B样条曲线的方法绘制曲线。</p>
+<h4 id="均匀B样条曲线"><a href="#均匀B样条曲线" class="headerlink" title="均匀B样条曲线"></a>均匀B样条曲线</h4><p>定义：当节点沿参数轴均匀等距分布，即$u_{i+1}-u_i=C&gt;0$时，为均匀B样条函数，比如：$\{0,1,2,3,4,5,6\},\{0,0.2,0.4,0.6,0.8,1\}$</p>
+<p>B-spline基函数($B_{i,k}$)的递推公式计算需要用到这里的思想。这里还使用上面当$n=4,k=4$的例子，从上面的定义可知，我们可以把节点集合$U=\{u_0,u_1,u_2,u_3,u_4,u_5,u_6,u_7,u_8\}$写成这样$U=\{0,1,2,3,4,5,6,7,8\}$也即$u_0=0,u_1=1,…,u_8=8$，当然U也可以写成其他集合，因为计算的时候是一个比例，所以对计算结果并没有影响，综上就可以简单的算出对应基函数的值。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">B_spline</span>(<span class="hljs-params">p_list</span>):</span>
+	<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">	:param p_list: (list of list of int:[[x0, y0], [x1, y1], ...])point set of p</span>
+<span class="hljs-string">	result: (list of list of int:[[x0, y0], [x1, y1], ...])point on curve</span>
+<span class="hljs-string">	绘制三次(四阶)均匀B样条曲线</span>
+<span class="hljs-string">	&quot;&quot;&quot;</span>
+	result = []
+	n = len(p_list)
+	k = <span class="hljs-number">4</span>
+	u = k<span class="hljs-number">-1</span>
+	<span class="hljs-keyword">while</span> (u &lt; n+<span class="hljs-number">1</span>):
+		x, y = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+		<span class="hljs-comment">#calc P(u)</span>
+		<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, n):
+			B_ik = deBoor_Cox(u, k, i)
+			x += B_ik * p_list[i][<span class="hljs-number">0</span>]
+			y += B_ik * p_list[i][<span class="hljs-number">1</span>]
+		result.append((int(x+<span class="hljs-number">0.5</span>), int(y+<span class="hljs-number">0.5</span>)))
+		u += <span class="hljs-number">1</span>/<span class="hljs-number">20927</span> <span class="hljs-comment">#2020/09/27</span>
+	<span class="hljs-keyword">return</span> result
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deBoor_Cox</span>(<span class="hljs-params">u, k, i</span>):</span>
+	<span class="hljs-keyword">if</span> k==<span class="hljs-number">1</span>:
+		<span class="hljs-keyword">if</span> i &lt;= u <span class="hljs-keyword">and</span> u &lt;= i+<span class="hljs-number">1</span>:
+			<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+		<span class="hljs-keyword">else</span>:
+			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+	<span class="hljs-keyword">else</span>:
+		coef_1, coef_2 = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>
+		<span class="hljs-keyword">if</span> (u-i == <span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (i+k<span class="hljs-number">-1</span>-i == <span class="hljs-number">0</span>):
+			coef_1 = <span class="hljs-number">0</span>
+		<span class="hljs-keyword">else</span>:
+			coef_1 = (u-i) / (i+k<span class="hljs-number">-1</span>-i)
+		<span class="hljs-keyword">if</span> (i+k-u == <span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (i+k-i<span class="hljs-number">-1</span> == <span class="hljs-number">0</span>)
+			coef_2 = <span class="hljs-number">0</span>
+		<span class="hljs-keyword">else</span>:
+			coef_2 = (i+k-u) / (i+k-i<span class="hljs-number">-1</span>)
+	<span class="hljs-keyword">return</span> coef_1 * deBoor_Cox(u, k<span class="hljs-number">-1</span>, i) + coef_2 * deBoox_Cox(u, k<span class="hljs-number">-1</span>, i+<span class="hljs-number">1</span>)</code></pre>
 
             </div>
             <hr>
@@ -258,7 +292,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/game/">game</a>
+                      <a class="hover-with-bg" href="/categories/algorithm/">algorithm</a>
                     
                   </div>
                 
@@ -272,18 +306,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/27/B-spline/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">B-spline(B样条曲线)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/25/Bezier/">
-                        <span class="hidden-mobile">Bezier算法</span>
+                      <a href="/2020/09/25/Tetris99/">
+                        <span class="hidden-mobile">Tetris99</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -484,7 +512,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Tetris99&nbsp;",
+        "B-spline(B样条曲线)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
