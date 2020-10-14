@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Cohen-Sutherland - vectormoon&#39;s blog</title>
+  <title>Liang-Barsky - vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,7 +150,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/blog_contents/Cohen-Sutherland/banner.jpg') no-repeat center center;
+         style="background: url('/img/blog_contents/Liang-Barsky/2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-11 21:17" pubdate>
-        2020年10月11日 晚上
+      <time datetime="2020-10-14 22:52" pubdate>
+        2020年10月14日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.5k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      20
        分钟
     </span>
   
@@ -225,47 +225,58 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Cohen-Sutherland</h1>
+            <h1 style="display: none">Liang-Barsky</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="算法简介"><a href="#算法简介" class="headerlink" title="算法简介"></a>算法简介</h2><p>&ensp;&ensp;&ensp;&ensp;编码算法是最早、最流行的线段裁剪算法，该算法采用区域检验的方法，能够快速有效地判断一条线段与裁剪窗口的位置关系，对完全接受或完全舍弃的线段无需求交，即可直接识别。</p>
-<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>&ensp;&ensp;&ensp;&ensp;编码算法将整个画布分成9个区域，如下图所示：</p>
-<p><img src="/img/blog_contents/Cohen-Sutherland/1.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>&ensp;&ensp;&ensp;&ensp;根据线段端点所在位置，给每个端点一个四位二进制码（称为区域码）。<strong>四位区域码的4位从左到右依次表示上、下、右、左</strong>。区域码的任何为赋值为1代表端点落在相应的区域中，否则为0。</p>
-<h2 id="区域码的生成"><a href="#区域码的生成" class="headerlink" title="区域码的生成"></a>区域码的生成</h2><p>&ensp;&ensp;&ensp;&ensp;区域码的生成有两种方法：</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>1.比较法</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 根据上面提到的区域编码规则可知，在确定区域码每位的值时，可通过比较端点坐标值$(x,y)$和裁剪边界来确定区域码各位的值：</p>
+              <h2 id="算法背景"><a href="#算法背景" class="headerlink" title="算法背景"></a>算法背景</h2><p>&ensp;&ensp;&ensp;&ensp;Liang-Barsky算法由梁友栋和Barsky共同发表，是目前计算机图形学最经典的算法之一。他们认为线段裁剪的问题是：裁剪窗口是二维对象，而线段是一维对象，两个对象的维度不同不便比较。他们给出的解决思路是，将裁剪线段和裁剪窗口看为点集裁剪的结果是两个点集的交集。</p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>&ensp;&ensp;&ensp;&ensp;<strong>Liang-Barsky算法的主要思想有两部分：</strong></p>
 <ul>
-<li>如果$x&lt;x_{min}$，表示该点在裁剪窗口左边界的左边，则第1位置1，否则置0；</li>
-<li>如果$x&gt;x_{max}$，表示该点在裁剪窗口右边界的右边，则第2位置1，否则置0；</li>
-<li>如果$y&lt;y_{min}$，表示该点在裁剪窗口下边界的下边，则第3位置1，否则置0；</li>
-<li>如果$y&lt;y_{max}$，表示该点在裁剪窗口上边界的上边，则第4位置1，否则置0；</li>
+<li>用参数方程表示直线</li>
+<li>将待裁剪直线看作是一个有方向的线</li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>2.差值法</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 按照下列两步可以确定区域码各位的值：</p>
+<h4 id="用参数方程表示直线"><a href="#用参数方程表示直线" class="headerlink" title="用参数方程表示直线"></a>用参数方程表示直线</h4><p>&ensp;&ensp;&ensp;&ensp;算法背景中提到Liang-Barsky算法的解决思路是，将裁剪线段和裁剪窗口看为点集裁剪的结果是两个点集的交集。<strong><em>那么裁剪线段如何转换点集呢？很显然用参数方程来表示直线。</em></strong></p>
+<p>&ensp;&ensp;&ensp;&ensp;设待裁剪线段为$P_1P_2$，其中$P_1=(x_1,y_1),P_2=(x_2,y_2)$，用参数关系u表示有下图关系：</p>
+<p><img src="/img/blog_contents/Liang-Barsky/1.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>显见有如下关系：</p>
+<script type="math/tex; mode=display">\begin{cases}x=x_1+u*(x2-x1)=x_1+u*\Delta x & 0\leq u \leq 1;\\y=y_1+u*(y2-y1)=y_1+u*\Delta y & 0\leq u \leq 1.\end{cases}</script><p>当$u=0$时，$x=x_1,y=y_1$也就是$P_1$；<br>当$u=1$时，$x=x_2,y=y_2$也就是$P_2$；<br>当$u=0.5$时，也就是该直线中点位置。</p>
+<p>由上面三种情况可以很容易归纳出该图像的几何意义：也就是u值即可表示要裁剪线段的多少</p>
+<h4 id="将待裁剪直线看作是一个有方向的线"><a href="#将待裁剪直线看作是一个有方向的线" class="headerlink" title="将待裁剪直线看作是一个有方向的线"></a>将待裁剪直线看作是一个有方向的线</h4><p>&ensp;&ensp;&ensp;&ensp;从上面我们知道u的取值可以决定线段要裁剪的多少，<strong><em>那么u到底如何取值变成了现在的首要目标？</em></strong></p>
+<p>&ensp;&ensp;&ensp;&ensp;我们将四个窗口的交边分别定义成两类边：<strong>入边</strong>和<strong>出边</strong></p>
 <ul>
-<li>计算端点坐标和裁剪边界之间的差值</li>
-<li>用各差值符号来设置区域码各位的值：第1位为$x-x_{min}$的符号位；第2位为$x-x{max}$；第3位为$y-y_{min}$的符号位；第4位为$y-y{max}$的符号位。</li>
+<li>入边：指从裁剪窗口之外进入到裁剪窗口方向的边</li>
+<li>出边：指从裁剪窗口之内延伸到窗口之外的边</li>
 </ul>
-<h2 id="对线段的裁剪处理"><a href="#对线段的裁剪处理" class="headerlink" title="对线段的裁剪处理"></a>对线段的裁剪处理</h2><p>&ensp;&ensp;&ensp;&ensp;根据线段和裁剪窗口的关系可分三种情况处理：</p>
-<p><img src="/img/blog_contents/Cohen-Sutherland/2.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>&ensp;&ensp;&ensp;&ensp;待裁剪线段和裁剪窗口必定会有四个交点（包括与裁剪窗口延长线的交点）分别设四个交点分别为$c_1,c_2,c_3,c_4$。设待裁剪直线为$P_1P_2$。则有下图：</p>
+<p><img src="/img/blog_contents/Liang-Barsky/2.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>&ensp;&ensp;&ensp;&ensp;显见要裁剪线段为$P_1$和$c_3$所夹线段，所以u的选取就要从$P_1,c_3$所对应$u_1,u_2$入手，则显见有如下关系式：</p>
+<p>$u_1=max(c_1,c_2,P_1)$&ensp;&ensp;&ensp;&ensp;$u_1$是两个入边和$P_1$对应u值的最小值<br>$u_2=min(c_3,P_2,c_4)$&ensp;&ensp;&ensp;&ensp;$u_2$是两个出边和$P_2$对应u值的最大值</p>
+<p>$u_1,u_2$的值要满足$u_1&lt;u_2$</p>
+<p>&ensp;&ensp;&ensp;&ensp;<strong><em>只要求出$u_1,u_2$就能算出裁剪线段，但是要求出$u_1,u_2$的话，就又出现了两个新的问题：</em></strong></p>
 <ul>
-<li><strong>线段完全在裁剪窗口之内</strong></li>
+<li>如何算出四个交点$c_1,c_2,c_3,c_4$所对应的u值</li>
+<li>如何确定哪两个边是出边，哪两个边是入边</li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp;两个端点的区域码都为0000，则该线段完全在裁剪窗口内。如上图：$P_5P_6$</p>
+<h2 id="四个交点对应的u值"><a href="#四个交点对应的u值" class="headerlink" title="四个交点对应的u值"></a>四个交点对应的u值</h2><p>在上面用参数方程表示直线章节中，我们提出了：</p>
+<script type="math/tex; mode=display">\begin{cases}x=x_1+u*(x2-x1)=x_1+u*\Delta x & 0\leq u \leq 1;\\y=y_1+u*(y2-y1)=y_1+u*\Delta y & 0\leq u \leq 1.\end{cases}</script><p>&ensp;&ensp;&ensp;&ensp;我们不妨先考虑下，在u为何值时，$(x,y)$位于裁剪窗口之内？我们设裁剪窗口的上边界为$y_{max}$，下边界为$y_{min}$，左边界为$x_{min}$，右边界为$x_{max}$，结合上式有：</p>
+<script type="math/tex; mode=display">\begin{cases}x_{min}\leq x_1+u*\Delta x \leq x_{max}\\ y_{min}\leq y_1+u*\Delta y \leq y_{max}\end{cases}</script><p>可以看出当</p>
+<script type="math/tex; mode=display">\begin{cases}x_1+u*\Delta x=x_{min}\\ x_1+u*\Delta x=x_{max}\\y_1+u*\Delta y = y_{min}\\y_1+u*\Delta y = y_{max}\end{cases}</script><p>时，为裁剪直线和四个边界的交点值，所以我们可以很轻松的算出四个对应的u值，此处不在赘述。</p>
+<h2 id="出入边的确定"><a href="#出入边的确定" class="headerlink" title="出入边的确定"></a>出入边的确定</h2><p>&ensp;&ensp;&ensp;&ensp;上面我们只提到了不等式的四个特殊情况，不失一般性，这里我们写出不等式的所有情况：</p>
+<script type="math/tex; mode=display">\begin{cases}x_{min}\leq x_1+u*\Delta x \leq x_{max}\\ y_{min}\leq y_1+u*\Delta y \leq y_{max}\end{cases}</script><p>可化简为：</p>
+<script type="math/tex; mode=display">\begin{cases}
+u*(-\Delta x) \leq x_1 - x_{min}\\
+u*\Delta x \leq x_{max} - x_1\\
+u*(-\Delta y) \leq y_1 - y_{min}\\
+u*\Delta y \leq y_{max} - y_1\\
+\end{cases}</script><p>上面四种情况可以归纳成</p>
+<script type="math/tex; mode=display">u*p_k\leq q_k,k=1,2,3,4</script><p>使用穷举法可知：</p>
 <ul>
-<li><strong>线段完全在裁剪窗口之外</strong></li>
+<li>当$p_k&lt;0$时，线段从裁剪边界延长线的外部延伸到内部，也就是入边</li>
+<li>当$p_k&gt;0$时，线段从裁剪边界延长线的内部延伸到外部，也就是出边</li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp;两个端点的区域码相与的结果不为0000，则该线段完全在裁剪窗口之外。如上图：$P_9P_{10}$</p>
-<ul>
-<li><strong>其他</strong></li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp;上图中$P_1P_2,P_3P_4,P_7P_8$都是此类问题；$P_1P_2,P_7P_8$显见属于一半落在窗口内一半落在窗口外，需要进行求交运算；而$P_3P_4$虽然完全落在窗口外但是条件不被第二种情况所适用也需要进行求交运算</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>求交过程</strong>：首先对线段外端点（落在窗口外的点）与一条裁剪边界比较来确定需要裁剪多少线段；然后，将线段的剩下部分与其他裁剪边界对比，直到该直线完全落在窗口内或者被舍弃。</p>
-<p>&ensp;&ensp;&ensp;&ensp;实际算法实现只有在检测到区域码的某位为1时，才把线段和对应裁剪窗口进行求交运算。整个算法的流程如下图所示：</p>
-<p><img src="/img/blog_contents/Cohen-Sutherland/3.jpg" srcset="/img/loading.gif" alt=""></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Cohen</span>-<span class="hljs-title">Sutherland</span>(<span class="hljs-params">p_list, x_min, y_min, x_max, y_max</span>):</span>
+<p>&ensp;&ensp;&ensp;&ensp;显见，当$p_k=0$时，且$q_k&lt;0$，则线段完全在边界外；若$q_k\geq 0$，则线段完全在边界内</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Liang</span>-<span class="hljs-title">Barsky</span>(<span class="hljs-params">p_list, x_min, y_min, x_max, y_max</span>):</span>
     <span class="hljs-string">&quot;&quot;&quot;线段裁剪</span>
+<span class="hljs-string"></span>
 <span class="hljs-string">    :param p_list: (list of list of int: [[x0, y0], [x1, y1]]) 线段的起点和终点坐标</span>
 <span class="hljs-string">    :param x_min: 裁剪窗口左上角x坐标</span>
 <span class="hljs-string">    :param y_min: 裁剪窗口左上角y坐标</span>
@@ -273,62 +284,38 @@
 <span class="hljs-string">    :param y_max: 裁剪窗口右下角y坐标</span>
 <span class="hljs-string">    :return: (list of list of int: [[x_0, y_0], [x_1, y_1]]) 裁剪后线段的起点和终点坐标</span>
 <span class="hljs-string">    &quot;&quot;&quot;</span>
-    result = []
+	result = []
     <span class="hljs-keyword">if</span> y_min &gt; y_max:
         y_min, y_max = y_max, y_min
     x0, y0 = p_list[<span class="hljs-number">0</span>]
     x1, y1 = p_list[<span class="hljs-number">1</span>]
 
-    <span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:
-        code0 = <span class="hljs-number">0</span> <span class="hljs-comment">#1_left, 2_right, 4_down, 8_up</span>
-        code1 = <span class="hljs-number">0</span> <span class="hljs-comment">#1_left, 2_right, 4_down, 8_up</span>
-        <span class="hljs-comment">#calc code0</span>
-        <span class="hljs-keyword">if</span> x0 &lt; x_min:
-            code0 += <span class="hljs-number">1</span>
-        <span class="hljs-keyword">elif</span> x0 &gt; x_max:
-            code0 += <span class="hljs-number">2</span>
-        <span class="hljs-keyword">if</span> y0 &lt; y_min:
-            code0 += <span class="hljs-number">4</span>
-        <span class="hljs-keyword">elif</span> y0 &gt; y_max:
-            code0 += <span class="hljs-number">8</span>
-        <span class="hljs-comment">#calc code1</span>
-        <span class="hljs-keyword">if</span> x1 &lt; x_min:
-            code1 += <span class="hljs-number">1</span>
-        <span class="hljs-keyword">elif</span> x1 &gt; x_max:
-            code1 += <span class="hljs-number">2</span>
-        <span class="hljs-keyword">if</span> y1 &lt; y_min:
-            code1 += <span class="hljs-number">4</span>
-        <span class="hljs-keyword">elif</span> y1 &gt; y_max:
-            code1 += <span class="hljs-number">8</span>
-        <span class="hljs-comment">#inside</span>
-        <span class="hljs-keyword">if</span> (code0 | code1) == <span class="hljs-number">0</span>:
-            result = [[x0, y0], [x1, y1]]
-            <span class="hljs-keyword">break</span>
-        <span class="hljs-comment">#outside</span>
-        <span class="hljs-keyword">elif</span> (code0 &amp; code1) != <span class="hljs-number">0</span>:
-            result.append([<span class="hljs-number">0</span>,<span class="hljs-number">0</span>])
-            result.append([<span class="hljs-number">0</span>,<span class="hljs-number">0</span>])
-            <span class="hljs-keyword">break</span>
-        <span class="hljs-comment">#otherwise</span>
-        <span class="hljs-keyword">else</span>:
-            <span class="hljs-keyword">if</span> code0 == <span class="hljs-number">0</span>:
-                x0, x1 = x1, x0
-                y0, y1 = y1, y0
-                code0, code1 = code1, code0
-            <span class="hljs-comment">#1_left, 2_right, 4_down, 8_up</span>
-            <span class="hljs-keyword">if</span> (code0 &amp; <span class="hljs-number">1</span>):
-                y0 = int(y0 + ((x_min-x0) * (y0-y1)/(x0-x1)) + <span class="hljs-number">0.5</span>)
-                x0 = x_min
-            <span class="hljs-keyword">if</span> (code0 &amp; <span class="hljs-number">2</span>):
-                y0 = int(y0 + ((x_max-x0) * (y0-y1)/(x0-x1)) + <span class="hljs-number">0.5</span>)
-                x0 = x_max
-            <span class="hljs-keyword">if</span> (code0 &amp; <span class="hljs-number">4</span>):
-                x0 = int(x0 + ((y_min-y0) * (x0-x1)/(y0-y1)) + <span class="hljs-number">0.5</span>)
-                y0 = y_min
-            <span class="hljs-keyword">if</span> (code0 &amp; <span class="hljs-number">8</span>):
-                x0 = int(x0 + ((y_max-y0) * (x0-x1)/(y0-y1)) + <span class="hljs-number">0.5</span>)
-                y0 = y_max
-	<span class="hljs-keyword">return</span> result</code></pre>
+    p = [x0-x1, x1-x0, y0-y1, y1-y0]
+    q = [x0-x_min, x_max-x0, y0-y_min, y_max-y0]
+    u0, u1 = <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
+    
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>):
+        <span class="hljs-keyword">if</span> p[i] &lt; <span class="hljs-number">0</span>:
+            u0 = max(u0, q[i]/p[i])
+        <span class="hljs-keyword">elif</span> p[i] &gt; <span class="hljs-number">0</span>:
+            u1 = min(u1, q[i]/p[i])
+        <span class="hljs-keyword">elif</span> (p[i] == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> q[i] &lt; <span class="hljs-number">0</span>):
+            result = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]
+            <span class="hljs-keyword">return</span> result
+        <span class="hljs-keyword">if</span> u0 &gt; u1:
+            result = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]
+            <span class="hljs-keyword">return</span> result
+            
+    <span class="hljs-keyword">if</span> u0 &gt; <span class="hljs-number">0</span>:
+        res_x0 = int(x0 + u0*(x1-x0) + <span class="hljs-number">0.5</span>)
+        res_y0 = int(y0 + u0*(y1-y0) + <span class="hljs-number">0.5</span>)
+    <span class="hljs-keyword">if</span> u1 &lt; <span class="hljs-number">1</span>:
+        res_x1 = int(x0 + u1*(x1-x0) + <span class="hljs-number">0.5</span>)
+        res_y1 = int(y0 + u1*(y1-y0) + <span class="hljs-number">0.5</span>)
+    result = [[res_x0, res_y0], [res_x1, res_y1]]
+
+    <span class="hljs-keyword">return</span> result</code></pre>
+
             </div>
             <hr>
             <div>
@@ -351,18 +338,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/14/Liang-Barsky/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Liang-Barsky</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/06/Two-Dimensional-Transformations/">
-                        <span class="hidden-mobile">二维几何变换</span>
+                      <a href="/2020/10/11/Cohen-Sutherland/">
+                        <span class="hidden-mobile">Cohen-Sutherland</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -563,7 +544,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Cohen-Sutherland&nbsp;",
+        "Liang-Barsky&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
