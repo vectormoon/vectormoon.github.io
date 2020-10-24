@@ -1,0 +1,901 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>SQL数据操纵 - vectormoon&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>vectormoon</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/blog_contents/SQL/banner.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-24 21:21" pubdate>
+        2020年10月24日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SQL数据操纵</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="SQL的基本查询功能"><a href="#SQL的基本查询功能" class="headerlink" title="SQL的基本查询功能"></a>SQL的基本查询功能</h1><h2 id="映像语句"><a href="#映像语句" class="headerlink" title="映像语句"></a>映像语句</h2><ul>
+<li>目标子句：SELECT *|colname {, colname…}</li>
+<li>范围子句：FROM tablename {, tablename…}</li>
+<li>条件子句：[WHERE search_condition]</li>
+<li>分组子句：[GROUP BY colname {, colname…}</li>
+<li>分组查询子句：[HAVING group_condition]]</li>
+<li>排序输出子句：[ORDER BY colname [ASC|DESC] {, colname[ASC|DESC]…}]</li>
+</ul>
+<p><strong>上述子句执行顺序</strong>：FROM(选表)-&gt;WHERE(条件选择)-&gt;GROUP BY(分组)-&gt;HAVING(条件选择)-&gt;SELECT(投影)-&gt;ORDER BY(排序)</p>
+<h2 id="目标子句"><a href="#目标子句" class="headerlink" title="目标子句"></a>目标子句</h2><p>SELECT子句相当于投影运行，有如下构造方式：</p>
+<ul>
+<li><p>给出结果属性的属性名</p>
+<ul>
+<li><p>通过‘表名.属性名’的方式来表明是哪一张表中的属性</p>
+</li>
+<li><p>结果属性的重命名，比如：</p>
+  <pre><code class="hljs sql">&lt;column_expression&gt; AS &lt;colname&gt;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>可用’*’来代替表中所有属性</p>
+</li>
+<li>可用保留字’distinct’来消除结果中的重复元组</li>
+</ul>
+<h2 id="范围子句"><a href="#范围子句" class="headerlink" title="范围子句"></a>范围子句</h2><p>FROM指定操作对象</p>
+<p>可以在FROM子句中对一个关系重新命名，如：</p>
+<pre><code class="hljs sql">&lt;table_name&gt; &lt;alias_name&gt;</code></pre>
+<ul>
+<li>主要用于关系自身的联接运算</li>
+</ul>
+<p><strong>SELECT子句</strong>和<strong>FROM子句</strong>是一条映像语句中必不可少的两个组成部分</p>
+<h2 id="条件子句"><a href="#条件子句" class="headerlink" title="条件子句"></a>条件子句</h2><p>WHERE是映像语句中的可选部分，用于定义查询条件。包括<strong>单个关系的元组选择条件</strong>以及<strong>关系与关系之间的联接条件</strong>都需要WHERE子句的逻辑表达式表示出来，比如说：</p>
+<ul>
+<li>FROM子句中给出的关系只能表明此次查询需要这些关系，它们是通过<strong>笛卡尔积</strong>运算合并起来的</li>
+<li>如果需要执行他们之间$\theta$<strong>联接</strong>或<strong>自然联接</strong>运算，则需要在WHERE子句中显式地给出他们的联接条件</li>
+</ul>
+<h2 id="常用谓词"><a href="#常用谓词" class="headerlink" title="常用谓词"></a>常用谓词</h2><p>除常用的算术比较运算符外，SQL还提供了若干比较谓词，以增加查询语句的表达能力：</p>
+<ul>
+<li>DISTINCT（去重）</li>
+<li>BETWEEN … AND … （查询一个区间）</li>
+<li>NOT BETWEEN … AND …</li>
+<li>LIKE（见下）</li>
+<li>NOT LIKE</li>
+<li>IS NULL（为空）</li>
+<li>IS NOT NULL</li>
+</ul>
+<p>DISTINCT仅用于SELECT子句中，其他谓词一般用于WHERE子句中，用于构造查询条件</p>
+<h4 id="LIKE谓词的使用方法"><a href="#LIKE谓词的使用方法" class="headerlink" title="LIKE谓词的使用方法"></a>LIKE谓词的使用方法</h4><pre><code class="hljs sql">column [NOT] LIKE val1 [ESCAPE val2]</code></pre>
+<ul>
+<li>模板（pattern）：val1<ul>
+<li>下划线（_）：可以匹配任意一个字符</li>
+<li>百分号（%）：可以匹配任意一个字符串（包括长度为0的空字符串）</li>
+<li>其他字符：只能匹配其自身</li>
+</ul>
+</li>
+<li>转义指示字符：val2<ul>
+<li>紧跟在转义指示字符val2之后的”_”或”%”(包括转义字符本身)不再是通配符，而是其自身</li>
+</ul>
+</li>
+</ul>
+<p><strong>例</strong>：查询姓名为A开头，且第三个字符必为P的学生的姓名和系别</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	sn,sd
+<span class="hljs-keyword">FROM</span>	S
+<span class="hljs-keyword">WHERE</span>	sn <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;A_P%&#x27;</span>;</code></pre>
+<p>查询在课程名中含有下划线（_）的课程的课程名</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> cno
+<span class="hljs-keyword">FROM</span> C
+<span class="hljs-keyword">WHERE</span> cn <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%A_%&#x27;</span> ESCAPE <span class="hljs-string">&#x27;A&#x27;</span>;</code></pre>
+<h2 id="布尔表达式"><a href="#布尔表达式" class="headerlink" title="布尔表达式"></a>布尔表达式</h2><p>在WHERE子句中，可以使用NOT、AND与OR这三个逻辑运算符构造出复杂的查询条件</p>
+<h2 id="简单连接"><a href="#简单连接" class="headerlink" title="简单连接"></a>简单连接</h2><p>在WHERE子句中，通过两个属性之间的相等比较实现表与表之间的连接</p>
+<p><strong>例</strong>：查询修读课程号为DATABASE的所有学生的姓名</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	S.sn
+<span class="hljs-keyword">FROM</span>	S,SC,C
+<span class="hljs-keyword">WHERE</span>	S.sno=SC.sno <span class="hljs-keyword">AND</span> SC.cno=C.cno <span class="hljs-keyword">AND</span> C.cn=<span class="hljs-string">&#x27;DATABASE&#x27;</span>;</code></pre>
+<h2 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h2><p>在查询中，有时需要对相同的表进行连接。为了区分两张相同的表，必须在FROM子句中至少对其中之一进行换名，以区分开这两张表</p>
+<p><strong>例</strong>：查询至少修读学号为S5的学生所修读的一门课程的学生的学号</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	SC1.sno
+<span class="hljs-keyword">FROM</span>	SC SC1, SC SC2
+<span class="hljs-keyword">WHERE</span>	SC1.cno=SC2.cno <span class="hljs-keyword">AND</span> SC2.sno = <span class="hljs-string">&#x27;s5&#x27;</span>;</code></pre>
+<h2 id="结果排序"><a href="#结果排序" class="headerlink" title="结果排序"></a>结果排序</h2><p>有时，需要查询结果按照某种顺序显示，此时需要加一个排序子句ORDER BY，形式如下：</p>
+<pre><code class="hljs sql">ORDER BY &lt;colname&gt; [ASC|DESC] &#123;, ...&#125;</code></pre>
+<p>其中：</p>
+<ul>
+<li><colname>给出需要排序的列的列名</li>
+<li>ASC|DESC则给出排序升序或降序参数，缺省值是升序</li>
+</ul>
+<h1 id="分层查询与集合谓词使用"><a href="#分层查询与集合谓词使用" class="headerlink" title="分层查询与集合谓词使用"></a>分层查询与集合谓词使用</h1><ul>
+<li>分层结构指的是一条映像语句的某个子句中嵌入另一条映像语句，被嵌入的映像语句通常称为子查询。如下:</li>
+</ul>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	...
+<span class="hljs-keyword">FROM</span>	...
+<span class="hljs-keyword">WHERE</span>	...(
+	<span class="hljs-keyword">SELECT</span>	...
+    <span class="hljs-keyword">FROM</span>	...
+    <span class="hljs-keyword">WHERE</span>	...);</code></pre>
+<ul>
+<li><p>子查询通常被嵌入WHERE子句中，可使结构清晰</p>
+</li>
+<li><p>由于子查询的查询结果是一个集合，因此需要在WHERE子句中引入集合谓词</p>
+</li>
+<li><p>WHERE子句中的集合谓词主要有：</p>
+<ul>
+<li><p>IN谓词：标量与集合量之间的属于比较</p>
+  <pre><code class="hljs sql">expr [NOT] IN (subquery)</code></pre>
+</li>
+<li><p>限定比较谓词：标量与集合中元素之间的量化比较</p>
+  <pre><code class="hljs sql">expr θ ANY|ALL (subquery)</code></pre>
+</li>
+<li><p>EXISTS谓词：是否为空集的判断谓词</p>
+  <pre><code class="hljs sql">[NOT] EXISTS (subquery)</code></pre>
+</li>
+</ul>
+</li>
+<li><p>嵌套查询的处理顺序</p>
+<ul>
+<li>一般情况下，嵌套查询中的子查询只需要被执行一次，然后利用所获得的中间查询结果来计算外层的查询语句，这样的子查询也被称为<strong>独立子查询</strong>，其处理顺序<strong>由内到外</strong></li>
+<li>在有些情况下，在子查询中调用了外层查询中的表以及元组变量。随着外层元组变量的每一次的取值变化，都需要重新执行子查询以获得相关的中间查询结果，这样的子查询也被称为<strong>相关子查询</strong>，其处理顺序是<strong>由外到内</strong>，直至处理完外层查询表中的所有元组</li>
+</ul>
+</li>
+</ul>
+<h2 id="IN谓词的使用"><a href="#IN谓词的使用" class="headerlink" title="IN谓词的使用"></a>IN谓词的使用</h2><p><strong>例</strong>：查询修读课程名为C1的所有学生的姓名</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<p>独立子查询</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	S.sn
+<span class="hljs-keyword">FROM</span>	S
+<span class="hljs-keyword">WHERE</span>	S.sno <span class="hljs-keyword">IN</span> (
+	<span class="hljs-keyword">SELECT</span>	SC.sno
+	<span class="hljs-keyword">FROM</span>	SC
+	<span class="hljs-keyword">WHERE</span>	SC.cno=<span class="hljs-string">&#x27;c1&#x27;</span>);</code></pre>
+<p>相关子查询</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	S.sn
+<span class="hljs-keyword">FROM</span>	S
+<span class="hljs-keyword">WHERE</span>	<span class="hljs-string">&#x27;C1&#x27;</span> <span class="hljs-keyword">IN</span> (
+	<span class="hljs-keyword">SELECT</span>	SC.cno
+	<span class="hljs-keyword">FROM</span>	SC
+	<span class="hljs-keyword">WHERE</span>	SC.sno=S.sno)</code></pre>
+<h2 id="限定比较谓词的使用"><a href="#限定比较谓词的使用" class="headerlink" title="限定比较谓词的使用"></a>限定比较谓词的使用</h2><p>谓词ANY表示子查询结果集合中的某个值，而谓词ALL表示子查询结果集中的所有值。</p>
+<p><strong>例</strong>：查询有学生成绩大于 C1 课程号中所有学生成绩的学生学号</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	sno
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span>	g &gt; <span class="hljs-keyword">ALL</span> (
+	<span class="hljs-keyword">SELECT</span>	g
+	<span class="hljs-keyword">FROM</span>	SC
+	<span class="hljs-keyword">WHERE</span>	cno=<span class="hljs-string">&#x27;C1&#x27;</span>);</code></pre>
+<p>查询有学生成绩大于等于 C1 课程号中的任何一位学生成绩的学生学号</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	sno
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span>	g &gt;= <span class="hljs-keyword">ANY</span> (
+	<span class="hljs-keyword">SELECT</span>	g
+	<span class="hljs-keyword">FROM</span>	SC
+	<span class="hljs-keyword">WHERE</span>	cno=<span class="hljs-string">&#x27;C1&#x27;</span>);</code></pre>
+<h2 id="谓词CONTAINS的使用"><a href="#谓词CONTAINS的使用" class="headerlink" title="谓词CONTAINS的使用"></a>谓词CONTAINS的使用</h2><p>集合间的关系可以通过WHERE子句中SELECT语句间的包含符CONTAINS实现</p>
+<p><strong>例</strong>：查询至少修读学号为 S4 的学生所修读的所有课程的学生的学号</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	sno
+<span class="hljs-keyword">FROM</span> 	SC
+<span class="hljs-keyword">WHERE</span>(
+    <span class="hljs-keyword">SELECT</span> 	SCx.cno
+    <span class="hljs-keyword">FROM</span> 	SC SCx
+    <span class="hljs-keyword">WHERE</span> 	SC.sno = SCx.sno)
+	CONTAINS
+		(<span class="hljs-keyword">SELECT</span> SC.cno
+    	 <span class="hljs-keyword">FROM</span> SC.SCy
+         <span class="hljs-keyword">WHERE</span> SCy.sno = ‘S4’);</code></pre>
+<ul>
+<li>SQL标准中并没有提供CONTAINS操作符</li>
+</ul>
+<h2 id="谓词EXISTS的使用"><a href="#谓词EXISTS的使用" class="headerlink" title="谓词EXISTS的使用"></a>谓词EXISTS的使用</h2><p><strong>例</strong>：查询修读课程号为 C1 的所有学生的姓名</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	S.sn
+<span class="hljs-keyword">FROM</span> 	S
+<span class="hljs-keyword">WHERE</span>	<span class="hljs-keyword">EXISTS</span>(
+	<span class="hljs-keyword">SELECT</span> 	*
+	<span class="hljs-keyword">FROM</span>	SC
+	<span class="hljs-keyword">WHERE</span> S.sno = SC.sno <span class="hljs-keyword">AND</span> SC.cno = ‘C1’);</code></pre>
+<h1 id="SELECT语句间的运算"><a href="#SELECT语句间的运算" class="headerlink" title="SELECT语句间的运算"></a>SELECT语句间的运算</h1><p>子查询之间的并、交、差运算：</p>
+<ul>
+<li>&lt;子查询1&gt; UNION [ALL] &lt;子查询2&gt;</li>
+<li>&lt;子查询1&gt; INTERSECT [ALL]&lt;子查询2&gt;</li>
+<li>&lt;子查询1&gt; EXCEPT [ALL]&lt;子查询2&gt;</li>
+</ul>
+<p><strong>例</strong>：查询计算机系的学生以及年龄小于 20 岁的学生</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql">(<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> S <span class="hljs-keyword">WHERE</span> sd=<span class="hljs-string">&#x27;CS&#x27;</span>)
+<span class="hljs-keyword">UNION</span>
+(<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> S <span class="hljs-keyword">WHERE</span> sa&lt;<span class="hljs-number">20</span>);</code></pre>
+<h1 id="SQL计算、统计、分类的功能"><a href="#SQL计算、统计、分类的功能" class="headerlink" title="SQL计算、统计、分类的功能"></a>SQL计算、统计、分类的功能</h1><h2 id="统计功能"><a href="#统计功能" class="headerlink" title="统计功能"></a>统计功能</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>参数类型</th>
+<th>结果类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT</td>
+<td>any(can be *)</td>
+<td>numeric</td>
+<td>count of rows</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>numeric</td>
+<td>numeric</td>
+<td>sum of argument</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>numeric</td>
+<td>numeric</td>
+<td>average of argument</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>char or numeric</td>
+<td>same as argument</td>
+<td>maximum value</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>char or numeric</td>
+<td>same as argument</td>
+<td>minimum value</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>上述函数不能在WHERE语句中使用</strong></p>
+<p><strong>例</strong>：给出学号为 S1 学生修读的课程门数</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	<span class="hljs-keyword">COUNT</span> (*)
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span>	sno=<span class="hljs-string">&#x27;S1&#x27;</span></code></pre>
+<p>给出学号为 S7 学生所修读课程的平均成绩</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	<span class="hljs-keyword">AVG</span>(G)
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span>	sno=<span class="hljs-string">&#x27;S7&#x27;</span></code></pre>
+<p>查询所享受的折扣(discnt)并非最高的客户编号(cid)</p>
+<p>Customers (cid, cname, city, discnt)<br>Agents (aid, aname, city, percent)<br>Products (pid, pname, city, quantity, price)<br>Orders (ordno, month, cid, aid, pid, qty, dollars)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	cid
+<span class="hljs-keyword">FROM</span> 	Customers
+<span class="hljs-keyword">WHERE</span> 	discnt &lt; <span class="hljs-keyword">ALL</span> (
+	<span class="hljs-keyword">SELECT</span> 	<span class="hljs-keyword">max</span>(c2.discnt)
+	<span class="hljs-keyword">FROM</span> 	Customers c2);</code></pre>
+<p>查询有两个或两个以上的客户订购过的商品的编号</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	p.pid
+<span class="hljs-keyword">FROM</span>	Products p
+<span class="hljs-keyword">WHERE</span> 	<span class="hljs-number">2</span> &lt;= <span class="hljs-keyword">ALL</span> (
+	<span class="hljs-keyword">SELECT</span> 	<span class="hljs-keyword">count</span>(<span class="hljs-keyword">distinct</span> cid)
+	<span class="hljs-keyword">FROM</span>	orders o
+	<span class="hljs-keyword">WHERE</span>	o.pid = p.pid);</code></pre>
+<h2 id="分类功能"><a href="#分类功能" class="headerlink" title="分类功能"></a>分类功能</h2><ul>
+<li>分组查询子句：GROUP BY colname {, colname …}<ul>
+<li>GROUP BY的参数是SELECT的子集</li>
+<li>根据属性colname的取值的不同，将满足WHERE条件的元组划分为不同的集合</li>
+<li>使用GROUP BY子句的目的是可以在SELECT子句中针对不同的元组集合分别进行统计计算，实现分类统计查询</li>
+</ul>
+</li>
+<li>HAVING group_condition<ul>
+<li>根据GROUP BY子句的分组结果，定义分组查询条件</li>
+<li>只有满足条件的元组集合才会被保留下来，用于生成最终的查询结果</li>
+<li>在HAVING子句中给出的条件是定义在分组后元组集合上</li>
+</ul>
+</li>
+</ul>
+<p><strong>IBM的例子</strong></p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	DEP, JOB, <span class="hljs-keyword">AVG</span>(SAL)
+<span class="hljs-keyword">FROM</span>	EMPL
+<span class="hljs-keyword">WHERE</span>	JOB &lt;&gt;<span class="hljs-string">&#x27;M&#x27;</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> DEP,JOB
+<span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">AVG</span>(SAL) &gt; <span class="hljs-number">28000</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">AVG</span>(SAL) <span class="hljs-keyword">DESC</span></code></pre>
+<p><img src="C:\Users\51402\blog\source\img\blog_contents\SQL\1.png" srcset="/img/loading.gif" alt="1"></p>
+<p><img src="C:\Users\51402\blog\source\img\blog_contents\SQL\2.png" srcset="/img/loading.gif" alt="2"></p>
+<p><strong>例</strong> 按总平均值降序给出所有课程均及格但不包括C8的所有学生总平均成绩</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>	sno, <span class="hljs-keyword">AVG</span>(G)
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span> 	cno &lt;&gt; C8
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> sno
+<span class="hljs-keyword">HAVING</span>	<span class="hljs-keyword">MIN</span>(G) &gt;= <span class="hljs-number">60</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">AVG</span>(G) <span class="hljs-keyword">DESC</span></code></pre>
+<p>查询每一个供应商在每一种商品上为‘ c002’ 和‘ c003’两位客户订购的总数量（ 结果给出供应商的编号和名称、商品的编号和名称以及销售总数量</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 	a.aid, a.aname, p.pid, p.pname, <span class="hljs-keyword">sum</span>(qty)
+<span class="hljs-keyword">FROM</span> 	Agents a, Products p, Orders o
+<span class="hljs-keyword">WHERE</span>	a.aid=o.aid <span class="hljs-keyword">and</span> p.pid=o.pid <span class="hljs-keyword">and</span> (o.cid=<span class="hljs-string">&#x27;002&#x27;</span> <span class="hljs-keyword">or</span> o.cide=<span class="hljs-string">&#x27;003&#x27;</span>)
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> a.aid, a.aname, p.pid, p.pname</code></pre>
+<h1 id="SELECT语句使用的一般规则"><a href="#SELECT语句使用的一般规则" class="headerlink" title="SELECT语句使用的一般规则"></a>SELECT语句使用的一般规则</h1><ol>
+<li>合并FROM子句中的表（笛卡尔乘积）</li>
+<li>利用WHERE子句中的条件进行元组选择，抛弃不满足WHERE条件的那些元组</li>
+<li>根据GROUP BY子句对保留下来的元组进行分组</li>
+<li>利用HAVING子句中的条件对分组后的元组集合(group)进行选择，抛弃不满足HAVING条件的那些元组集合</li>
+<li>根据SELECT子句进行统计计算，生成结果关系的元组</li>
+<li>根据ORDER BY子句对查询结果进行排序</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/14/Liang-Barsky/">
+                        <span class="hidden-mobile">Liang-Barsky算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "CJLA8YTjPChxuMagVg7i04FA-gzGzoHsz",
+          app_key: "B856mBwXs87nnLMgXfANwziy",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "https://cjla8ytj.lc-cn-n1-shared.com",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SQL数据操纵&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?1d16873cd1df8717914bfc239f3448f5";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
