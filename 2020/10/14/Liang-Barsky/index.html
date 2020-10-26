@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      19
        分钟
     </span>
   
@@ -306,12 +306,10 @@ u*\Delta y \leq y_{max} - y_1\\
             result = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]
             <span class="hljs-keyword">return</span> result
             
-    <span class="hljs-keyword">if</span> u0 &gt; <span class="hljs-number">0</span>:
-        res_x0 = int(x0 + u0*(x1-x0) + <span class="hljs-number">0.5</span>)
-        res_y0 = int(y0 + u0*(y1-y0) + <span class="hljs-number">0.5</span>)
-    <span class="hljs-keyword">if</span> u1 &lt; <span class="hljs-number">1</span>:
-        res_x1 = int(x0 + u1*(x1-x0) + <span class="hljs-number">0.5</span>)
-        res_y1 = int(y0 + u1*(y1-y0) + <span class="hljs-number">0.5</span>)
+    res_x0 = int(x0 + u0*(x1-x0) + <span class="hljs-number">0.5</span>)
+    res_y0 = int(y0 + u0*(y1-y0) + <span class="hljs-number">0.5</span>)
+    res_x1 = int(x0 + u1*(x1-x0) + <span class="hljs-number">0.5</span>)
+    res_y1 = int(y0 + u1*(y1-y0) + <span class="hljs-number">0.5</span>)
     result = [[res_x0, res_y0], [res_x1, res_y1]]
 
     <span class="hljs-keyword">return</span> result</code></pre>
