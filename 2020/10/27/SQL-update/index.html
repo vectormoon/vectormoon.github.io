@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Liang-Barsky算法 - vectormoon&#39;s blog</title>
+  <title>SQL更新功能 - vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,7 +150,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/blog_contents/Liang-Barsky/2.jpg') no-repeat center center;
+         style="background: url('/img/blog_contents/SQL/banner.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-14 22:52" pubdate>
-        2020年10月14日 晚上
+      <time datetime="2020-10-27 13:52" pubdate>
+        2020年10月27日 下午
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      283 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      4
        分钟
     </span>
   
@@ -225,95 +225,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Liang-Barsky算法</h1>
+            <h1 style="display: none">SQL更新功能</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="算法背景"><a href="#算法背景" class="headerlink" title="算法背景"></a>算法背景</h2><p>&ensp;&ensp;&ensp;&ensp;Liang-Barsky算法由梁友栋和Barsky共同发表，是目前计算机图形学最经典的算法之一。他们认为线段裁剪的问题是：裁剪窗口是二维对象，而线段是一维对象，两个对象的维度不同不便比较。他们给出的解决思路是，将裁剪线段和裁剪窗口看为点集裁剪的结果是两个点集的交集。</p>
-<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>&ensp;&ensp;&ensp;&ensp;<strong>Liang-Barsky算法的主要思想有两部分：</strong></p>
+              <h2 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h2><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> 
+<span class="hljs-keyword">FROM</span> table_name
+[<span class="hljs-keyword">WHERE</span> search_condition];</code></pre>
+<p>在table_name表中删除符合条件search_condition的元组</p>
 <ul>
-<li>用参数方程表示直线</li>
-<li>将待裁剪直线看作是一个有方向的线</li>
+<li>在忽略WHERE子句的情况下，删除表table_name中的所有元组</li>
 </ul>
-<h4 id="用参数方程表示直线"><a href="#用参数方程表示直线" class="headerlink" title="用参数方程表示直线"></a>用参数方程表示直线</h4><p>&ensp;&ensp;&ensp;&ensp;算法背景中提到Liang-Barsky算法的解决思路是，将裁剪线段和裁剪窗口看为点集裁剪的结果是两个点集的交集。<strong><em>那么裁剪线段如何转换点集呢？很显然用参数方程来表示直线。</em></strong></p>
-<p>&ensp;&ensp;&ensp;&ensp;设待裁剪线段为$P_1P_2$，其中$P_1=(x_1,y_1),P_2=(x_2,y_2)$，用参数关系u表示有下图关系：</p>
-<p><img src="/img/blog_contents/Liang-Barsky/1.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>显见有如下关系：</p>
-<script type="math/tex; mode=display">\begin{cases}x=x_1+u*(x2-x1)=x_1+u*\Delta x & 0\leq u \leq 1;\\y=y_1+u*(y2-y1)=y_1+u*\Delta y & 0\leq u \leq 1.\end{cases}</script><p>当$u=0$时，$x=x_1,y=y_1$也就是$P_1$；<br>当$u=1$时，$x=x_2,y=y_2$也就是$P_2$；<br>当$u=0.5$时，也就是该直线中点位置。</p>
-<p>由上面三种情况可以很容易归纳出该图像的几何意义：也就是u值即可表示要裁剪线段的多少</p>
-<h4 id="将待裁剪直线看作是一个有方向的线"><a href="#将待裁剪直线看作是一个有方向的线" class="headerlink" title="将待裁剪直线看作是一个有方向的线"></a>将待裁剪直线看作是一个有方向的线</h4><p>&ensp;&ensp;&ensp;&ensp;从上面我们知道u的取值可以决定线段要裁剪的多少，<strong><em>那么u到底如何取值变成了现在的首要目标？</em></strong></p>
-<p>&ensp;&ensp;&ensp;&ensp;我们将四个窗口的交边分别定义成两类边：<strong>入边</strong>和<strong>出边</strong></p>
+<p><strong>例</strong>：删除计算机系（CS）全体学生的选课记录</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span>
+<span class="hljs-keyword">FROM</span>	SC
+<span class="hljs-keyword">WHERE</span>	sno <span class="hljs-keyword">IN</span> (
+		<span class="hljs-keyword">SELECT</span>	sno
+		<span class="hljs-keyword">FROM</span> 	S
+		<span class="hljs-keyword">WHERE</span>	sd=<span class="hljs-string">&#x27;CS&#x27;</span>)</code></pre>
+<h2 id="元组插入功能"><a href="#元组插入功能" class="headerlink" title="元组插入功能"></a>元组插入功能</h2><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span>
+<span class="hljs-keyword">INTO</span>	tabname [(colname &#123;, colname ...&#125;)]
+<span class="hljs-keyword">VALUES</span>	(expr|<span class="hljs-literal">NULL</span> &#123;, expr|<span class="hljs-literal">NULL</span> ...&#125;) | subquery;</code></pre>
+<p><strong>例</strong>：插入计算机系（CS）学生选修数据库（Database）课的选课记录</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> SC(sno,cno)
+	<span class="hljs-keyword">SELECT</span>	sno, cno
+	<span class="hljs-keyword">FROM</span> 	S, C
+	<span class="hljs-keyword">WHERE</span>	sd=<span class="hljs-string">&#x27;CS&#x27;</span> <span class="hljs-keyword">and</span> cn=<span class="hljs-string">&#x27;Database&#x27;</span>;</code></pre>
+<h2 id="修改功能"><a href="#修改功能" class="headerlink" title="修改功能"></a>修改功能</h2><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>	table_name
+<span class="hljs-keyword">SET</span>		colname=expr|<span class="hljs-literal">NULL</span>|subquery,...
+[<span class="hljs-keyword">WHERE</span> 	search_condition]</code></pre>
+<p>修改指定基表table_name中满足的WHERE条件的元组</p>
 <ul>
-<li>入边：指从裁剪窗口之外进入到裁剪窗口方向的边</li>
-<li>出边：指从裁剪窗口之内延伸到窗口之外的边</li>
+<li>用SET子句中的赋值语句修改相关元组对应的属性</li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp;待裁剪线段和裁剪窗口必定会有四个交点（包括与裁剪窗口延长线的交点）分别设四个交点分别为$c_1,c_2,c_3,c_4$。设待裁剪直线为$P_1P_2$。则有下图：</p>
-<p><img src="/img/blog_contents/Liang-Barsky/2.jpg" srcset="/img/loading.gif" alt=""></p>
-<p>&ensp;&ensp;&ensp;&ensp;显见要裁剪线段为$P_1$和$c_3$所夹线段，所以u的选取就要从$P_1,c_3$所对应$u_1,u_2$入手，则显见有如下关系式：</p>
-<p>$u_1=max(c_1,c_2,P_1)$&ensp;&ensp;&ensp;&ensp;$u_1$是两个入边和$P_1$对应u值的最小值<br>$u_2=min(c_3,P_2,c_4)$&ensp;&ensp;&ensp;&ensp;$u_2$是两个出边和$P_2$对应u值的最大值</p>
-<p>$u_1,u_2$的值要满足$u_1&lt;u_2$</p>
-<p>&ensp;&ensp;&ensp;&ensp;<strong><em>只要求出$u_1,u_2$就能算出裁剪线段，但是要求出$u_1,u_2$的话，就又出现了两个新的问题：</em></strong></p>
-<ul>
-<li>如何算出四个交点$c_1,c_2,c_3,c_4$所对应的u值</li>
-<li>如何确定哪两个边是出边，哪两个边是入边</li>
-</ul>
-<h2 id="四个交点对应的u值"><a href="#四个交点对应的u值" class="headerlink" title="四个交点对应的u值"></a>四个交点对应的u值</h2><p>在上面用参数方程表示直线章节中，我们提出了：</p>
-<script type="math/tex; mode=display">\begin{cases}x=x_1+u*(x2-x1)=x_1+u*\Delta x & 0\leq u \leq 1;\\y=y_1+u*(y2-y1)=y_1+u*\Delta y & 0\leq u \leq 1.\end{cases}</script><p>&ensp;&ensp;&ensp;&ensp;我们不妨先考虑下，在u为何值时，$(x,y)$位于裁剪窗口之内？我们设裁剪窗口的上边界为$y_{max}$，下边界为$y_{min}$，左边界为$x_{min}$，右边界为$x_{max}$，结合上式有：</p>
-<script type="math/tex; mode=display">\begin{cases}x_{min}\leq x_1+u*\Delta x \leq x_{max}\\ y_{min}\leq y_1+u*\Delta y \leq y_{max}\end{cases}</script><p>可以看出当</p>
-<script type="math/tex; mode=display">\begin{cases}x_1+u*\Delta x=x_{min}\\ x_1+u*\Delta x=x_{max}\\y_1+u*\Delta y = y_{min}\\y_1+u*\Delta y = y_{max}\end{cases}</script><p>时，为裁剪直线和四个边界的交点值，所以我们可以很轻松的算出四个对应的u值，此处不在赘述。</p>
-<h2 id="出入边的确定"><a href="#出入边的确定" class="headerlink" title="出入边的确定"></a>出入边的确定</h2><p>&ensp;&ensp;&ensp;&ensp;上面我们只提到了不等式的四个特殊情况，不失一般性，这里我们写出不等式的所有情况：</p>
-<script type="math/tex; mode=display">\begin{cases}x_{min}\leq x_1+u*\Delta x \leq x_{max}\\ y_{min}\leq y_1+u*\Delta y \leq y_{max}\end{cases}</script><p>可化简为：</p>
-<script type="math/tex; mode=display">\begin{cases}
-u*(-\Delta x) \leq x_1 - x_{min}\\
-u*\Delta x \leq x_{max} - x_1\\
-u*(-\Delta y) \leq y_1 - y_{min}\\
-u*\Delta y \leq y_{max} - y_1\\
-\end{cases}</script><p>上面四种情况可以归纳成</p>
-<script type="math/tex; mode=display">u*p_k\leq q_k,k=1,2,3,4</script><p>使用穷举法可知：</p>
-<ul>
-<li>当$p_k&lt;0$时，线段从裁剪边界延长线的外部延伸到内部，也就是入边</li>
-<li>当$p_k&gt;0$时，线段从裁剪边界延长线的内部延伸到外部，也就是出边</li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp;显见，当$p_k=0$时，且$q_k&lt;0$，则线段完全在边界外；若$q_k\geq 0$，则线段完全在边界内</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Liang</span>-<span class="hljs-title">Barsky</span>(<span class="hljs-params">p_list, x_min, y_min, x_max, y_max</span>):</span>
-    <span class="hljs-string">&quot;&quot;&quot;线段裁剪</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">    :param p_list: (list of list of int: [[x0, y0], [x1, y1]]) 线段的起点和终点坐标</span>
-<span class="hljs-string">    :param x_min: 裁剪窗口左上角x坐标</span>
-<span class="hljs-string">    :param y_min: 裁剪窗口左上角y坐标</span>
-<span class="hljs-string">    :param x_max: 裁剪窗口右下角x坐标</span>
-<span class="hljs-string">    :param y_max: 裁剪窗口右下角y坐标</span>
-<span class="hljs-string">    :return: (list of list of int: [[x_0, y_0], [x_1, y_1]]) 裁剪后线段的起点和终点坐标</span>
-<span class="hljs-string">    &quot;&quot;&quot;</span>
-	result = []
-    <span class="hljs-keyword">if</span> y_min &gt; y_max:
-        y_min, y_max = y_max, y_min
-    x0, y0 = p_list[<span class="hljs-number">0</span>]
-    x1, y1 = p_list[<span class="hljs-number">1</span>]
-
-    p = [x0-x1, x1-x0, y0-y1, y1-y0]
-    q = [x0-x_min, x_max-x0, y0-y_min, y_max-y0]
-    u0, u1 = <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
-    
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>):
-        <span class="hljs-keyword">if</span> p[i] &lt; <span class="hljs-number">0</span>:
-            u0 = max(u0, q[i]/p[i])
-        <span class="hljs-keyword">elif</span> p[i] &gt; <span class="hljs-number">0</span>:
-            u1 = min(u1, q[i]/p[i])
-        <span class="hljs-keyword">elif</span> (p[i] == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> q[i] &lt; <span class="hljs-number">0</span>):
-            result = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]
-            <span class="hljs-keyword">return</span> result
-        <span class="hljs-keyword">if</span> u0 &gt; u1:
-            result = [[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>], [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]]
-            <span class="hljs-keyword">return</span> result
-            
-    res_x0 = int(x0 + u0*(x1-x0) + <span class="hljs-number">0.5</span>)
-    res_y0 = int(y0 + u0*(y1-y0) + <span class="hljs-number">0.5</span>)
-    res_x1 = int(x0 + u1*(x1-x0) + <span class="hljs-number">0.5</span>)
-    res_y1 = int(y0 + u1*(y1-y0) + <span class="hljs-number">0.5</span>)
-    result = [[res_x0, res_y0], [res_x1, res_y1]]
-
-    <span class="hljs-keyword">return</span> result</code></pre>
-
+<p><strong>例</strong>：将计算机系学生的成绩全置零</p>
+<p>S(sno,sn,sd,sa)        C(sno,cn,pno)        SC(sno,cno,g)</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>	SC
+<span class="hljs-keyword">SET</span>		G=<span class="hljs-number">0</span>
+<span class="hljs-keyword">WHERE</span>	sno <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> 	sno
+	<span class="hljs-keyword">FROM</span>	S
+	<span class="hljs-keyword">WHERE</span>	sd=<span class="hljs-string">&#x27;CS&#x27;</span>);</code></pre>
+<p><strong>例</strong>：将数学系学生的年龄均加1岁</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>	S
+<span class="hljs-keyword">SET</span>		sa=sa+<span class="hljs-number">1</span>
+<span class="hljs-keyword">WHERE</span>	sd=<span class="hljs-string">&#x27;math&#x27;</span>;</code></pre>
             </div>
             <hr>
             <div>
@@ -336,18 +293,12 @@ u*\Delta y \leq y_{max} - y_1\\
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/24/SQL-search/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SQL数据操纵</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/11/Cohen-Sutherland/">
-                        <span class="hidden-mobile">Cohen-Sutherland算法</span>
+                      <a href="/2020/10/25/xianqingouji-yinzhuanbu-shushi/">
+                        <span class="hidden-mobile">饮馔部_蔬食第一</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -548,7 +499,7 @@ u*\Delta y \leq y_{max} - y_1\\
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Liang-Barsky算法&nbsp;",
+        "SQL更新功能&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
