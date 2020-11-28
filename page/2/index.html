@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>分类 - 技术 - vectormoon&#39;s blog</title>
+  <title>vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -166,68 +166,75 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 9 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2020</p>
     
-    <a href="/2020/11/29/Introduction-to-qt/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">qt程序创建及模板代码分析</span>
-      <time style="float: right;">11-29</time>
-    </a>
-  
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/09/24/Eight-Queens/" target="_self">
+          <img src="/img/blog_contents/Eight_Queens/Eight%20Queens_index.jpg" srcset="/img/loading.gif" alt="八皇后问题">
+        </a>
+      </div>
     
-    <a href="/2020/10/27/SQL-update/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SQL更新功能</span>
-      <time style="float: right;">10-27</time>
-    </a>
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/24/Eight-Queens/">八皇后问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/Eight-Queens/">
+          
+          
+            
+          
+          题目描述在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。
+输入格式一行一个正整数n，表示棋盘是n*n大小的
+输出格式有多少种摆法
+解题思路深搜、标记以及回溯
+算法详情介绍顺序：标记-&gt;深搜-&gt;回溯
+1.标记 使用数组记录无法下棋的部分：
+bool flag[4][100];
+当置为1时，即为无法再放置的标记，具体
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 10:29" pubdate>
+              2020-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
   
-    
-    <a href="/2020/10/24/SQL-search/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SQL数据操纵</span>
-      <time style="float: right;">10-24</time>
-    </a>
-  
-    
-    <a href="/2020/10/14/Liang-Barsky/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Liang-Barsky算法</span>
-      <time style="float: right;">10-14</time>
-    </a>
-  
-    
-    <a href="/2020/10/11/Cohen-Sutherland/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Cohen-Sutherland算法</span>
-      <time style="float: right;">10-11</time>
-    </a>
-  
-    
-    <a href="/2020/10/06/Two-Dimensional-Transformations/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">二维几何变换</span>
-      <time style="float: right;">10-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/27/B-spline/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">B-spline(B样条曲线)</span>
-      <time style="float: right;">09-27</time>
-    </a>
-  
-    
-    <a href="/2020/09/25/Bezier/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Bezier算法</span>
-      <time style="float: right;">09-25</time>
-    </a>
-  
-    
-    <a href="/2020/09/24/Eight-Queens/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">八皇后问题</span>
-      <time style="float: right;">09-24</time>
-    </a>
-  
-</div>
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -350,7 +357,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "分类 - 技术&nbsp;",
+        "你发现了一个中二月︿(￣︶￣)︿&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

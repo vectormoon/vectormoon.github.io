@@ -171,6 +171,67 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/29/Introduction-to-qt/" target="_self">
+          <img src="/img/blog_contents/QT/banner.jpg" srcset="/img/loading.gif" alt="qt程序创建及模板代码分析">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/11/29/Introduction-to-qt/">qt程序创建及模板代码分析</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/29/Introduction-to-qt/">
+          
+          
+            
+          
+          qt ver 5.14.2
+qt Creator创建程序Build System
+Qbs市场占有率低，将被弃用
+qmake更轻量级
+cmake功能强大
+
+不繁琐的小程序用qmake，大工程文件用cmake更好
+DetailsBase class有三个选项：
+
+QMainWindow
+QWidget
+QDialog
+
+QMainWindow和QDialog是QWidget的子类。QWidget创建出
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-29 01:34" pubdate>
+              2020-11-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/QT/">QT</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/10/27/SQL-update/" target="_self">
           <img src="/img/blog_contents/SQL/banner.png" srcset="/img/loading.gif" alt="SQL更新功能">
         </a>
@@ -653,62 +714,19 @@ Bezier曲线的定义Bezier算法围绕着Bezier曲线展开，Bezier曲线的
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/09/24/Eight-Queens/" target="_self">
-          <img src="/img/blog_contents/Eight_Queens/Eight%20Queens_index.jpg" srcset="/img/loading.gif" alt="八皇后问题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/24/Eight-Queens/">八皇后问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/24/Eight-Queens/">
-          
-          
-            
-          
-          题目描述在n×n格的国际象棋上摆放n个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。
-输入格式一行一个正整数n，表示棋盘是n*n大小的
-输出格式有多少种摆法
-解题思路深搜、标记以及回溯
-算法详情介绍顺序：标记-&gt;深搜-&gt;回溯
-1.标记 使用数组记录无法下棋的部分：
-bool flag[4][100];
-当置为1时，即为无法再放置的标记，具体
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-24 10:29" pubdate>
-              2020-09-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
 
 
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
