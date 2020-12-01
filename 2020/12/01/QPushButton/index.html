@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>qt程序创建及模板代码分析 - vectormoon&#39;s blog</title>
+  <title>QPushButton类的使用 - vectormoon&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-29 01:34" pubdate>
-        2020年11月29日 凌晨
+      <time datetime="2020-12-01 23:47" pubdate>
+        2020年12月1日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      667 字
+      256 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      3
        分钟
     </span>
   
@@ -225,136 +225,32 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">qt程序创建及模板代码分析</h1>
+            <h1 style="display: none">QPushButton类的使用</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>qt ver 5.14.2</p>
-<h1 id="qt-Creator创建程序"><a href="#qt-Creator创建程序" class="headerlink" title="qt Creator创建程序"></a>qt Creator创建程序</h1><h2 id="Build-System"><a href="#Build-System" class="headerlink" title="Build System"></a>Build System</h2><ul>
-<li>Qbs市场占有率低，将被弃用</li>
-<li>qmake更轻量级</li>
-<li>cmake功能强大</li>
-</ul>
-<p>不繁琐的小程序用qmake，大工程文件用cmake更好</p>
-<h2 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h2><p>Base class有三个选项：</p>
-<ul>
-<li>QMainWindow</li>
-<li>QWidget</li>
-<li>QDialog</li>
-</ul>
-<p>QMainWindow和QDialog是QWidget的子类。QWidget创建出来只有一个空白界面；QMainWindow在QWidget基础上多了菜单栏，工具栏和状态栏；QDialog对应对话框。</p>
-<p>Generate form选项可以通过拖拽完成界面的设计</p>
-<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>Translation File功能显见</p>
-<h2 id="Kits"><a href="#Kits" class="headerlink" title="Kits"></a>Kits</h2><p>版本套件选择，例如：Desktop对应.exe开发；UWP对应windows通用平台开发；</p>
-<h1 id="qt程序组成"><a href="#qt程序组成" class="headerlink" title="qt程序组成"></a>qt程序组成</h1><blockquote>
-<p> main.cpp</p>
-</blockquote>
-<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;mywidget.h&quot;</span></span>
+              <h1 id="QPushButton的使用"><a href="#QPushButton的使用" class="headerlink" title="QPushButton的使用"></a>QPushButton的使用</h1><h2 id="QPushButton类定义"><a href="#QPushButton类定义" class="headerlink" title="QPushButton类定义"></a>QPushButton类定义</h2><p><img src="C:\Users\51402\blog\source\img\blog_contents\QT\QPushButton_1.png" srcset="/img/loading.gif" alt="QPushButton_1"></p>
+<h2 id="创建按钮"><a href="#创建按钮" class="headerlink" title="创建按钮"></a>创建按钮</h2><h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><pre><code class="hljs c++"><span class="hljs-comment">//创建按钮</span>
+   QPushButton *btn1 = <span class="hljs-keyword">new</span> QPushButton;
+   <span class="hljs-comment">//btn-&gt;show();//show以顶层方式弹出窗口控件</span>
+   <span class="hljs-comment">//使btn对象依附于myWidget窗口</span>
+   btn1-&gt;setParent(<span class="hljs-keyword">this</span>);
+   <span class="hljs-comment">//显示文本</span>
+   btn1-&gt;setText(<span class="hljs-string">&quot;btn1&quot;</span>);</code></pre>
+<h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><pre><code class="hljs c++"><span class="hljs-comment">//等价于上面的方法 有一个弊端是按照控件的大小创建窗口</span>
+   QPushButton *btn2 = <span class="hljs-keyword">new</span> QPushButton(<span class="hljs-string">&quot;btn2&quot;</span>, <span class="hljs-keyword">this</span>);</code></pre>
+<h2 id="移动、重置窗口大小"><a href="#移动、重置窗口大小" class="headerlink" title="移动、重置窗口大小"></a>移动、重置窗口大小</h2><h3 id="窗口坐标体系"><a href="#窗口坐标体系" class="headerlink" title="窗口坐标体系"></a>窗口坐标体系</h3><p>以左上角为原点(0,0)，X自左到右，Y自上到下</p>
+<h3 id="移动按钮位置"><a href="#移动按钮位置" class="headerlink" title="移动按钮位置"></a>移动按钮位置</h3><pre><code class="hljs c++"><span class="hljs-comment">//移动btn按钮</span>
+btn2-&gt;move(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</code></pre>
+<h3 id="重置窗口、按钮大小"><a href="#重置窗口、按钮大小" class="headerlink" title="重置窗口、按钮大小"></a>重置窗口、按钮大小</h3><pre><code class="hljs c++"><span class="hljs-comment">//重置窗口大小</span>
+resize(<span class="hljs-number">600</span>, <span class="hljs-number">400</span>);
+<span class="hljs-comment">//重置按钮大小</span>
+btn2-&gt;resize(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>);</code></pre>
+<h3 id="设置窗口大小（大小无法被调整）"><a href="#设置窗口大小（大小无法被调整）" class="headerlink" title="设置窗口大小（大小无法被调整）"></a>设置窗口大小（大小无法被调整）</h3><pre><code class="hljs c++"><span class="hljs-comment">//设置固定窗口大小</span>
+setFixedSize(<span class="hljs-number">600</span>, <span class="hljs-number">400</span>);</code></pre>
+<h3 id="设置窗口标题"><a href="#设置窗口标题" class="headerlink" title="设置窗口标题"></a>设置窗口标题</h3><pre><code class="hljs c++"><span class="hljs-comment">//设置窗口标题</span>
+setWindowTitle(<span class="hljs-string">&quot;窗口&quot;</span>);</code></pre>
+<h2 id="对象树"><a href="#对象树" class="headerlink" title="对象树"></a>对象树</h2><p>创建的对象，如果是派生类不用管理其释放操作，该对象会加入到对象树，递归的释放</p>
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QApplication&gt; // 包含一个应用程序类的头文件</span></span>
-
-<span class="hljs-comment">//main程序入口；argc命令行变量的数量；argv命令行变量的数组</span>
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span></span>&#123;
-    <span class="hljs-comment">//a应用程序对象，在Qt中，应用程序对象有且仅有一个</span>
-    <span class="hljs-function">QApplication <span class="hljs-title">a</span><span class="hljs-params">(argc, argv)</span></span>;
-    <span class="hljs-comment">//窗口对象，myWidget父类-&gt;QWidget</span>
-    myWidget w;
-    <span class="hljs-comment">//窗口对象 默认不会显示，必须要调用show方法才能显示窗口</span>
-    w.show();
-    
-    <span class="hljs-comment">//让应用程序对象进入消息循环机制，窗口不会一闪而过</span>
-    <span class="hljs-keyword">return</span> a.exec();
-&#125;
-</code></pre>
-<blockquote>
-<p>.pro文件</p>
-</blockquote>
-<pre><code class="hljs c++">QT       += core gui <span class="hljs-comment">//QT包含模块</span>
-
-greaterThan(QT_MAJOR_VERSION, <span class="hljs-number">4</span>): QT += widgets <span class="hljs-comment">//版本号大于4所额外包含模块</span>
-
-CONFIG += c++<span class="hljs-number">11</span>
-
-# The following define makes your compiler emit warnings <span class="hljs-keyword">if</span> you use
-# any Qt feature that has been marked deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
-
-# You can also make your code fail to compile <span class="hljs-keyword">if</span> it uses deprecated APIs.
-# In order to <span class="hljs-keyword">do</span> so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=<span class="hljs-number">0x060000</span>    # disables all the APIs deprecated before Qt <span class="hljs-number">6.0</span><span class="hljs-number">.0</span>
-
-SOURCES += \	<span class="hljs-comment">//源文件</span>
-    main.cpp \
-    mywidget.cpp
-
-HEADERS += \	<span class="hljs-comment">//头文件</span>
-    mywidget.h
-
-FORMS += \
-    mywidget.ui
-
-# Default rules <span class="hljs-keyword">for</span> deployment.
-qnx: target.path = /tmp/$$&#123;TARGET&#125;/bin
-<span class="hljs-keyword">else</span>: unix:!android: target.path = /opt/$$&#123;TARGET&#125;/bin
-!isEmpty(target.path): INSTALLS += target</code></pre>
-<blockquote>
-<p>mywidget.h</p>
-</blockquote>
-<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> MYWIDGET_H</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MYWIDGET_H</span>
-<span class="hljs-comment">//防止被多次include，文件只会被编译一次和pragma once等效</span>
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QWidget&gt;//窗口类QWidget头文件</span></span>
-
-QT_BEGIN_NAMESPACE
-<span class="hljs-keyword">namespace</span> Ui &#123; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myWidget</span>;</span> &#125;
-QT_END_NAMESPACE
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myWidget</span> :</span> <span class="hljs-keyword">public</span> QWidget
-&#123;
-    Q_OBJECT <span class="hljs-comment">//Q_OBJECT是一个宏，允许类中使用信号和槽的机制</span>
-
-<span class="hljs-keyword">public</span>:
-    myWidget(QWidget *parent = <span class="hljs-literal">nullptr</span>);
-    ~myWidget();
-
-<span class="hljs-keyword">private</span>:
-    Ui::myWidget *ui;
-&#125;;
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// MYWIDGET_H</span></span>
-</code></pre>
-<blockquote>
-<p>mywidget.cpp</p>
-</blockquote>
-<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;mywidget.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;ui_mywidget.h&quot;</span></span>
-
-<span class="hljs-comment">//命名规范</span>
-<span class="hljs-comment">//类名 首字母大写，单词和单词之间首字母大写</span>
-<span class="hljs-comment">//函数名 变量名称 首字母小写，单词和单词之间首字母大写</span>
-
-<span class="hljs-comment">//快捷键</span>
-<span class="hljs-comment">//注释 ctrl + /</span>
-<span class="hljs-comment">//运行 ctrl + r</span>
-<span class="hljs-comment">//编译 ctrl + b</span>
-<span class="hljs-comment">//字体缩放 ctrl + 鼠标滚轮</span>
-<span class="hljs-comment">//自动对齐 ctrl + i</span>
-
-myWidget::myWidget(QWidget *parent)
-    : QWidget(parent)
-    , ui(<span class="hljs-keyword">new</span> Ui::myWidget)
-&#123;
-    ui-&gt;setupUi(<span class="hljs-keyword">this</span>);
-&#125;
-
-myWidget::~myWidget()
-&#123;
-    <span class="hljs-keyword">delete</span> ui;
-&#125;
-
-</code></pre>
             </div>
             <hr>
             <div>
@@ -379,18 +275,12 @@ myWidget::~myWidget()
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/01/QPushButton/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">QPushButton类的使用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/27/SQL-update/">
-                        <span class="hidden-mobile">SQL更新功能</span>
+                      <a href="/2020/11/29/Introduction-to-qt/">
+                        <span class="hidden-mobile">qt程序创建及模板代码分析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -591,7 +481,7 @@ myWidget::~myWidget()
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "qt程序创建及模板代码分析&nbsp;",
+        "QPushButton类的使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

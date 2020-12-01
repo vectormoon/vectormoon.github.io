@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>QPushButton类的使用</title>
+    <link href="/2020/12/01/QPushButton/"/>
+    <url>/2020/12/01/QPushButton/</url>
+    
+    <content type="html"><![CDATA[<h1 id="QPushButton的使用"><a href="#QPushButton的使用" class="headerlink" title="QPushButton的使用"></a>QPushButton的使用</h1><h2 id="QPushButton类定义"><a href="#QPushButton类定义" class="headerlink" title="QPushButton类定义"></a>QPushButton类定义</h2><p><img src="C:\Users\51402\blog\source\img\blog_contents\QT\QPushButton_1.png" alt="QPushButton_1"></p><h2 id="创建按钮"><a href="#创建按钮" class="headerlink" title="创建按钮"></a>创建按钮</h2><h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><pre><code class="hljs c++"><span class="hljs-comment">//创建按钮</span>   QPushButton *btn1 = <span class="hljs-keyword">new</span> QPushButton;   <span class="hljs-comment">//btn-&gt;show();//show以顶层方式弹出窗口控件</span>   <span class="hljs-comment">//使btn对象依附于myWidget窗口</span>   btn1-&gt;setParent(<span class="hljs-keyword">this</span>);   <span class="hljs-comment">//显示文本</span>   btn1-&gt;setText(<span class="hljs-string">&quot;btn1&quot;</span>);</code></pre><h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><pre><code class="hljs c++"><span class="hljs-comment">//等价于上面的方法 有一个弊端是按照控件的大小创建窗口</span>   QPushButton *btn2 = <span class="hljs-keyword">new</span> QPushButton(<span class="hljs-string">&quot;btn2&quot;</span>, <span class="hljs-keyword">this</span>);</code></pre><h2 id="移动、重置窗口大小"><a href="#移动、重置窗口大小" class="headerlink" title="移动、重置窗口大小"></a>移动、重置窗口大小</h2><h3 id="窗口坐标体系"><a href="#窗口坐标体系" class="headerlink" title="窗口坐标体系"></a>窗口坐标体系</h3><p>以左上角为原点(0,0)，X自左到右，Y自上到下</p><h3 id="移动按钮位置"><a href="#移动按钮位置" class="headerlink" title="移动按钮位置"></a>移动按钮位置</h3><pre><code class="hljs c++"><span class="hljs-comment">//移动btn按钮</span>btn2-&gt;move(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</code></pre><h3 id="重置窗口、按钮大小"><a href="#重置窗口、按钮大小" class="headerlink" title="重置窗口、按钮大小"></a>重置窗口、按钮大小</h3><pre><code class="hljs c++"><span class="hljs-comment">//重置窗口大小</span>resize(<span class="hljs-number">600</span>, <span class="hljs-number">400</span>);<span class="hljs-comment">//重置按钮大小</span>btn2-&gt;resize(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>);</code></pre><h3 id="设置窗口大小（大小无法被调整）"><a href="#设置窗口大小（大小无法被调整）" class="headerlink" title="设置窗口大小（大小无法被调整）"></a>设置窗口大小（大小无法被调整）</h3><pre><code class="hljs c++"><span class="hljs-comment">//设置固定窗口大小</span>setFixedSize(<span class="hljs-number">600</span>, <span class="hljs-number">400</span>);</code></pre><h3 id="设置窗口标题"><a href="#设置窗口标题" class="headerlink" title="设置窗口标题"></a>设置窗口标题</h3><pre><code class="hljs c++"><span class="hljs-comment">//设置窗口标题</span>setWindowTitle(<span class="hljs-string">&quot;窗口&quot;</span>);</code></pre><h2 id="对象树"><a href="#对象树" class="headerlink" title="对象树"></a>对象树</h2><p>创建的对象，如果是派生类不用管理其释放操作，该对象会加入到对象树，递归的释放</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+      <category>QT</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>qt程序创建及模板代码分析</title>
     <link href="/2020/11/29/Introduction-to-qt/"/>
     <url>/2020/11/29/Introduction-to-qt/</url>
